@@ -1,10 +1,9 @@
-const baseURL = process.env.VUE_APP_BASE_URL;
+import createAxiosService from "@/utils/httpService";
+const axiosService = createAxiosService();
 export async function fetchImplementedCOs() {
-  const response = await fetch(`${baseURL}/CO.properties`); 
-  const rawText = await response.text();
-
-  console.log("rawText",rawText)
-  let lines = rawText.trim().split('\n');
+  const response = await axiosService.get('CO.properties',{ responseType: 'text'})
+  console.log("response",response)
+  let lines = response.trim().split('\n');
 
   return lines
     .map(line => line.trim())
