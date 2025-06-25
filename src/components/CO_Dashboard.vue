@@ -17,7 +17,7 @@
       <v-card-text class="pa-4">
         <v-data-table
           :headers="headers"
-          :items="coData"
+          :items="coList"
           :search="search"
           :items-per-page="itemsPerPage"
           :loading="loading"
@@ -40,20 +40,19 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { fetchImplementedCOs } from '@/services/ChangeOrder/ChangeOrderService' 
+import ChangeOrderService from "@/services/ChangeOrder/ChangeOrderService";
 
-const coData = ref([])
+const coList = ref([]); 
 const search = ref('')
 
 onMounted(async () => {
   try {
-    coData.value = await fetchImplementedCOs()
-    console.log("Codata ",coData.value);
-    
+    coList.value = await ChangeOrderService.fetchImplementedCOs();
+    console.log("Fetched CO list:", coList.value);
   } catch (error) {
-    console.error('Error fetching COs:', error)
+    console.error(error); 
   }
-})
+});
 
 const headers = [
   { title: 'CO Number', key: 'coNumber', sortable: true, align: 'start' },
