@@ -67,7 +67,7 @@
     },
     "dependencies": {
         "@widget-lab/3ddashboard-utils": "2.2.2",
-        "axios": "^1.9.0",
+        "axios": "^1.10.0",
         "core-js": "3.x",
         "fs": "^0.0.1-security",
         "pinia": "^2.3.1",
