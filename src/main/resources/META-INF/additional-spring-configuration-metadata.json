@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "ChangeOrderData",
+    "type": "java.lang.String",
+    "description": "A description for 'ChangeOrderData'"
+  },
+  {
+    "name": "ChangeOrderData",
+    "type": "java.lang.String",
+    "description": "A description for 'ChangeOrderData'"
+  },
+  {
+    "name": "ChangeOrderData.filepath",
+    "type": "java.lang.String",
+    "description": "A description for 'ChangeOrderData.filepath'"
+  }
+]}
