@@ -4,13 +4,13 @@
     "description": "Widget Template using Vue.js 3 with option API & Vuetify 3",
     "main": "index.html",
     "scripts": {
-        "build": "webpack --config-name prod --progress",
+        "build": "webpack --mode production --env NODE_ENV=production --config-name prod --progress",
         "postinstall": "npx @widget-lab/widget-templates-config",
         "postversion": "git push --follow-tags",
         "lint": "eslint src/**/*.{ts,vue}",
         "lintFix": "eslint src/**/*.{ts,vue} --fix",
-        "start": "webpack serve --config-name dev --open --progress",
-        "startS3": "webpack serve --config-name devS3 --progress"
+        "start": "webpack serve --mode development --env NODE_ENV=development --config-name dev --open --progress",
+        "startS3": "webpack serve --mode development --env NODE_ENV=development --config-name devS3 --progress"
     },
     "repository": {
         "type": "git",
@@ -48,6 +48,7 @@
         "babel-loader": "9.1.2",
         "css-loader": "6.7.3",
         "deepmerge": "4.x",
+        "dotenv-webpack": "^8.1.0",
         "eslint": "8.39.x",
         "eslint-config-prettier": "8.x",
         "eslint-plugin-prettier": "4.2.1",
