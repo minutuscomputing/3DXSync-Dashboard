@@ -1,0 +1,30 @@
+# GitLab CI/CD configuration
+# v1.2.7   hash:4bf2f843caec277c0ea50a24e6a1cd9b
+
+include: ".gitlab-ci/.widgetlab-default-ci.yml"
+
+# Edit your projet settings here
+variables:
+    # which kind of project is it ? (npm | widget)
+    PROJECT_TYPE: widget
+    # project base directory if composed of the following variables ; s3://$S3_BUCKET_NAME/$PROJECT_CONTEXT/$PROJECT_CATEGORY/$PACKAGE_NAME
+    # project context (widget-lab, wwve, YOUR_TRIGRAM, ...). Will be used as primary directory for publishing
+    PROJECT_CONTEXT: widget-lab
+    # project category (templates, examples, widgets, npm, tests/subpath...). Will be used as secondary directory for publishing. no "/" at the end!
+    PROJECT_CATEGORY: templates
+    # S3 bucket name
+    S3_BUCKET_NAME: btcc
+    # S3 region (eg. eu-west-1)
+    S3_REGION: eu-west-1
+    # share sources ("YES" | "NO")
+    SHARE_SOURCES: "YES"
+    # launch "npm run build" during build job ("YES" | "NO"). Sometimes (rarely) there is nothing to build :)
+    BUILD: "YES"
+    # launch "npm run lint" during build job ("YES" | "NO").
+    LINT: "YES"
+    # generate version.json in dist/static ("YES" | "NO")
+    GENERATE_VERSION_JSON: "YES"
+    # tags to select runner. see https://docs.gitlab.com/ee/ci/runners/configure_runners.html
+    RUNNER_TAG: widgetlab
+    # create release ("YES" | "NO")
+    CREATE_RELEASE: "YES"
