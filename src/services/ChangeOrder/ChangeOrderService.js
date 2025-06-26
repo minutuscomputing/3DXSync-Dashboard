@@ -1,21 +1,28 @@
-import createAxiosService from "@/utils/httpService";
-const axiosService = createAxiosService();
-export async function fetchImplementedCOs() {
-  const response = await axiosService.get('CO.properties',{ responseType: 'text'})
-  console.log("response",response)
-  let lines = response.trim().split('\n');
+ 
+import BaseService from "@/services/baseService";
+import { RESPONSE_TYPES } from "@/services/http/responseTypes";
+class ChangeOrderService extends BaseService{
 
-  return lines
-    .map(line => line.trim())
-    .filter(line => line && !line.startsWith('#') && line.includes('='))
-    .map(line => {
-      const value = line.split('=')[1];
-      return value.split(';')
-    })
-    .filter(parts => parts.length >= 3 && parts[1].toLowerCase() === 'implemented')
-    .map(parts => ({
-      coNumber: parts[0],
-      status: parts[1],
-      date: parts[2]
-    }));
+  async fetchImplementedCOs() {
+    const rawText = await this._handleRequest(
+      () => this._fetchService.get('CO.properties'),
+      { responseType: RESPONSE_TYPES.TEXT }
+    );
+    return rawText
+      .trim()
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#') && line.includes('='))
+      .map(line => line.split('=')[1].split(';'))
+      .filter(parts => parts.length >= 4 && parts[1].toLowerCase() === 'implemented')
+      .map(parts => ({
+        coNumber: parts[0],      
+        status: parts[3],        
+        date: parts[2],
+      }));
+  }
+ 
 }
+ 
+export default new ChangeOrderService();
+ 
