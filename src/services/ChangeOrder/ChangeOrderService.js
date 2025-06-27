@@ -19,6 +19,7 @@ class ChangeOrderService extends BaseService{
         coNumber: parts[0],      
         status: parts[3],        
         date: parts[2],
+        description: parts[4] || '-'
       }));
   }
  

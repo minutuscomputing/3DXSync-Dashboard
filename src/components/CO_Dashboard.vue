@@ -60,7 +60,7 @@
        
         <v-card-text class="pa-4">
           <v-data-table
-            :headers="headers"
+            :headers="tableHeaders"
             :items="filteredItems"
             :search="search"
             :items-per-page="itemsPerPage"
@@ -69,7 +69,7 @@
             density="compact"
             item-value="id"
           >
-            <template v-slot:no-data>
+            <template #no-data>
               <div class="text-center text-subtitle-1 pa-4 text-grey">
                 No change orders found
               </div>
@@ -81,9 +81,38 @@
   </div>
 </template>
 
+<style scoped>
+  .v-data-table {
+    border-radius: 10px;
+  }
+
+  .v-card-title,
+  .dialog-title {
+    background-color: #f0f0f0;
+    padding: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .v-dialog .v-card {
+    border-radius: 12px;
+  }
+
+  .v-btn {
+    text-transform: capitalize;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid #e0e0e0;
+  }
+</style>
+
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import ChangeOrderService from "@/services/ChangeOrder/ChangeOrderService";
+import { tableHeaders } from '@/constant/dashboardTableHeaders'
 
 const coList = ref([]);
 const search = ref('');
@@ -124,37 +153,4 @@ const filteredCoList = computed(() => {
 
 const filteredItems = computed(() => filteredCoList.value);
 
-const headers = [
-  { title: 'CO Number', key: 'coNumber', sortable: true, align: 'start' },
-  { title: 'Status', key: 'status', sortable: true, align: 'start' },
-  { title: 'Date', key: 'date', sortable: true, align: 'start' },
-];
 </script>
-
-<style scoped>
-.v-data-table {
-  border-radius: 10px;
-}
-
-.v-card-title,
-.dialog-title {
-  background-color: #f0f0f0;
-  padding: 16px;
-  font-weight: 600;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.v-dialog .v-card {
-  border-radius: 12px;
-}
-
-.v-btn {
-  text-transform: capitalize;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.border-bottom {
-  border-bottom: 1px solid #e0e0e0;
-}
-</style>
