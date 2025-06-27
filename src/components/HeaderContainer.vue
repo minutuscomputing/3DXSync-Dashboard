@@ -6,7 +6,7 @@
       alt="CG Logo"
       class="cg-logo"
     />
-    <h1> Change Order Dashboard </h1>
+    <h1>3DXSync Dashboard </h1>
     <img
       id="minutusLogo"
       :src="MinLogo"
