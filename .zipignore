@@ -1,0 +1,10 @@
+.zipignore
+dist/*
+node_modules/*
+.git/*
+.gitlab-ci/*
+.gitlab-ci.yml
+test/report/*
+test/e2e/report/*
+widget-config.js
+README.md

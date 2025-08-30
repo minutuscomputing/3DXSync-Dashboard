@@ -1,0 +1,81 @@
+{
+    "name": "3DXSync-Dashboard",
+    "version": "2.0.3",
+    "description": "Widget Template using Vue.js 3 with option API & Vuetify 3",
+    "main": "index.html",
+    "scripts": {
+        "build": "webpack --mode production --env NODE_ENV=production --config-name prod --progress",
+        "postinstall": "npx @widget-lab/widget-templates-config",
+        "postversion": "git push --follow-tags",
+        "lint": "eslint src/**/*.{ts,vue}",
+        "lintFix": "eslint src/**/*.{ts,vue} --fix",
+        "start": "webpack serve --mode development --env NODE_ENV=development --config-name dev --open --progress",
+        "startS3": "webpack serve --mode development --env NODE_ENV=development --config-name devS3 --progress"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@itgit.dsone.3ds.com:widget-lab/widget-template-vue.git"
+    },
+    "author": "widget-lab",
+    "license": "",
+    "eslintConfig": {
+        "extends": [
+            "@widget-lab/eslint-config-widgetlab/widget-vue3-js",
+            "plugin:vuetify/base"
+        ]
+    },
+    "eslintIgnore": [
+        "src/index.html",
+        "src/static/*",
+        "dist",
+        "node_modules",
+        "/*.js"
+    ],
+    "prettier": "@widget-lab/prettier-config-widgetlab",
+    "browserslist": [
+        "extends @widget-lab/browserslist-config-widgetlab"
+    ],
+    "devDependencies": {
+        "@babel/core": "7.x",
+        "@babel/preset-env": "7.x",
+        "@mdi/font": "7.x",
+        "@vue/compiler-sfc": "3.x",
+        "@widget-lab/browserslist-config-widgetlab": "0.2.5",
+        "@widget-lab/eslint-config-widgetlab": "2.6.1",
+        "@widget-lab/prettier-config-widgetlab": "1.0.6",
+        "@widget-lab/widget-templates-config": "2.3.2",
+        "@widget-lab/widget-templates-webpack-configs": "2.2.2",
+        "babel-loader": "9.1.2",
+        "css-loader": "6.7.3",
+        "deepmerge": "4.x",
+        "dotenv-webpack": "^8.1.0",
+        "eslint": "8.39.x",
+        "eslint-config-prettier": "8.x",
+        "eslint-plugin-prettier": "4.2.1",
+        "eslint-plugin-vue": "9.x",
+        "eslint-plugin-vuetify": "2.x",
+        "sass": "1.x",
+        "sass-loader": "13.2.x",
+        "style-loader": "3.x",
+        "vue-eslint-parser": "9.x",
+        "vue-loader": "17.x",
+        "webpack": "5.x",
+        "webpack-cli": "5.x",
+        "webpack-dev-server": "4.x",
+        "webpack-merge": "5.8.0",
+        "webpack-plugin-vuetify": "2.x"
+    },
+    "dependencies": {
+        "@widget-lab/3ddashboard-utils": "2.2.2",
+        "axios": "^1.10.0",
+        "core-js": "3.x",
+        "fs": "^0.0.1-security",
+        "pinia": "^2.3.1",
+        "regenerator-runtime": "0.x",
+        "vue": "3.x",
+        "vuetify": "^3.7.2"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}
